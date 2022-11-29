@@ -4,11 +4,18 @@ from mysql.connector import errorcode
 import unittest 
 
 class MessageDAO:
-	def __init__(self, test_mode=False):
+    def __init__(self, test_mode=false):
         self.is_test_mode=test_mode
-        
-    def inset_msg():
-    	
+    def insert_msg(self, data):
+        array = json.loads(data)
+        for element in array:
+            if (element['MsgType'] == 'position_report'):
+                tempArray = []
+                statement = "INSERT INTO TABLE PositionReport VALUES (%s" + ", %s"*len(element)-1 + ")"
+                for value in element.values():
+                    tempArray.append(value)
+                print( statement, (tempArray[index] for index in tempArray))
+
 
 
 	
